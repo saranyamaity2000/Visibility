@@ -1,0 +1,2 @@
+{"data_columns" : ["temperature", "humidity", "wind_speed", "wind_bearing", "month", "pressure","Breezy and Overcast",	"Breezy and Partly Cloudy",	"Clear",	"Foggy",
+  "Mostly Cloudy",	"Overcast",	"Partly Cloudy","others"]}

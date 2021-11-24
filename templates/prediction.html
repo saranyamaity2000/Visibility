@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Icon -->
+    <link rel="icon" href="{{url_for('static', filename='weatherlogo.png')}}">
+
+    <title>prediction</title>
+  </head>
+  <body>
+  <section class="text-gray-600 body-font">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-col text-center w-full mb-20">
+        <h2 class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
+            <span class="block text-indigo-600 xl:inline">Visibility Prediction</span>
+        </h2>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base"><b>Fill the form for prediction</b></p>
+        <br><br><h2><b>{{prediction_text}}</b></h2>
+      </div>
+
+    <a class="btn btn-primary" href="./" role="button">Back</a><br><br>
+<!--     form start from here -->
+    <form action='/predict' method='POST'>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"><b>Weather</b></label>
+        <select class="form-select" id="weather" name="weather" aria-label="Default select example">
+          <option selected>-- Select Weather Type --</option>
+          {% for x in weather_options %}
+          <option value = {{x}}> {{x}} </option>
+          {% endfor %}
+        </select>
+      </div>
+
+     <div class="mb-3">
+         <label for="exampleFormControlInput1" class="form-label"> <b>Month</b></label>
+        <select class="form-select" id="month" name="month" aria-label="Default select example">
+          <option selected>-- Select Month Number  --</option>
+          {% for x in months %}
+          <option value = {{x}} > {{x}} </option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"><b>Enter Temperature (°C)</b></label>
+        <input type="number" class="form-control" id="temperature" name="temperature" placeholder="constraint => Realistic">
+      </div>
+
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"><b>Enter Pressure (millibars)"</b></label>
+        <input type="number" class="form-control" id="pressure" name="pressure" placeholder="constraint => Realistic">
+      </div>
+
+      <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"><b>Enter Wind Speed(km/hr)</b></label>
+        <input type="number" class="form-control" id="wind_speed" name="wind_speed" placeholder="constraint => Realistic">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"><b>Enter Wind Direction (Degree)</b></label>
+        <input type="number" class="form-control" id="wind_bearing" name="wind_bearing" placeholder="constraint => 0° to 360°">
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label"><b>Enter Humidity (%)</b></label>
+        <input type="number" class="form-control" id="humidity" name="humidity" placeholder="constraint => 0 to 100">
+      </div>
+
+
+
+
+
+
+
+      <button type="submit" class="btn btn-primary">Predict</button>
+    </form>
+
+    </div>
+</section>
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
