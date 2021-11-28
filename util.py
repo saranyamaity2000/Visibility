@@ -1,5 +1,7 @@
 import pickle
 import json
+import zipfile
+
 import numpy as np
 
 __weathers = None
@@ -38,9 +40,13 @@ def load_saved_artifacts():
         print("columns loaded")
 
     if __model is None:
-        with open('./artifacts/model_rf.pkl', 'rb') as f:  # rb as its a binary file
+        with zipfile.ZipFile("./artifacts/model_rf.pkl.zip", 'r') as file:
+            file.extractall()
+
+        with open('model_rf.pkl', 'rb') as f:  # rb as its a binary file
             __model = pickle.load(f)
             print("model loaded")
+
     print("loading saved artifacts...done")
 
 
